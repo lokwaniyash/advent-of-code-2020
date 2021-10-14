@@ -73,7 +73,8 @@ for (let i = 1; i < jolts.length; i++) {
 
 let allPaths = 0;
 let allFinalPaths = 0;
-let node = joltTree(new Node(jolts[0]));
+joltTree(0);
+// let node = joltTree(new Node(jolts[0]));
 // printTree(
 //   node,
 //   (node) => node.value + "",
@@ -82,25 +83,27 @@ let node = joltTree(new Node(jolts[0]));
 
 console.log(allPaths);
 console.log(last);
-console.log(allFinalPaths);
+// console.log(allFinalPaths);
 
-function joltTree(node) {
+function joltTree(value) {
   // console.log(node.value);
-  if (node.value == last) {
-    // console.log("found it");
-    allPaths++;
-  }
+  // if (node.value == last) {
+  //   // console.log("found it");
+  //   allPaths++;
+  // }
   for (let i = 0; i < jolts.length; i++) {
-    if (jolts[i] - node.value >= 1 && jolts[i] - node.value <= 3) {
-      let child = new Node(jolts[i]);
-      node.addVal(joltTree(child));
+    if (jolts[i] - value >= 1 && jolts[i] - value <= 3) {
+      // let child = new Node(jolts[i]);
+      // node.addVal(joltTree(child));
       // joltTree(child);
-      // console.log(child.value);
+      // console.log(jolts[i]);
+      if (jolts[i] == last) allPaths++;
+      joltTree(jolts[i]);
     }
   }
   // console.log(node.value == last, last);
-  allFinalPaths++;
-  return node;
+  // allFinalPaths++;
+  return;
 }
 
 // console.log(one, two, three);
